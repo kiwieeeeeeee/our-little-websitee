@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Rain for Manish ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    }
+    .falling {
+      position: absolute;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-100px); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0.8; }
+    }
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(255,255,255,0.7);
+    }
+    .text {
+      color: pink;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 5px white;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const items = [
+    'images/manish_1.jpg',
+    'images/manish_2.jpg',
+    'images/manish_3.jpg',
+    'images/manish_4.jpg',
+    'images/manish_5.jpg',
+    'I love you ❤️',
+    'You are my greatest blessing 💖',
+    'My everything 💕',
+    'Forever yours ❤️',
+    'You make my heart smile 💓'
+  ];
+
+  function createFallingItem() {
+    const el = document.createElement('div');
+    el.classList.add('falling');
+
+    const item = items[Math.floor(Math.random() * items.length)];
+
+    if (item.endsWith('.jpg') || item.endsWith('.png')) {
+      const img = document.createElement('img');
+      img.src = item;
+      el.appendChild(img);
+    } else {
+      const span = document.createElement('div');
+      span.textContent = item;
+      span.classList.add('text');
+      el.appendChild(span);
+    }
+
+    el.style.left = Math.random() * window.innerWidth + 'px';
+    el.style.animationDuration = (5 + Math.random() * 5) + 's';
+
+    document.body.appendChild(el);
+
+    setTimeout(() => {
+      el.remove();
+    }, 10000);
+  }
+
+  setInterval(createFallingItem, 400);
+</script>
+
+</body>
+</html>
